@@ -1,0 +1,144 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if title %}
+  <h3>{{ title }}</h3>
+
+
+
+{% endif %}
+
+
+
+		<div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+				  <!-- Overlay -->
+				 {#  <div class="overlay"></div> #}
+
+				  <!-- Indicators -->
+				  <ol class="carousel-indicators">
+				  	  {% for key, row in rows %} 
+				  	  	{% if key == 0 %}
+
+				  	  	<li data-target="#bs-carousel" data-slide-to="{{ key }}" class="active"></li>
+
+				  	  {% else %}
+
+				  	  	<li data-target="#bs-carousel" data-slide-to="{{ key }}" ></li>
+				  	  {% endif %}
+				  	  
+				  	  {% endfor %}
+
+				    
+				   
+				  </ol>
+				  
+				  <!-- Wrapper for slides -->
+				  <div class="carousel-inner">
+						   
+		  			{% for keyr, rowr in rows %}
+
+		  				{% set imgurl = rowr.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_image }}'] %}
+
+		  				
+
+		  				{% set feature_title =  rowr.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ title }}'] %}	
+
+		  				{% set numberOfWords = feature_title|split('-') %}
+
+		  				{% set feature_body = rowr.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ body }}'] %}
+
+		  				{% set featuredlink = rowr.content['#view'].style_plugin.render_tokens[ loop.index0 ]['{{ field_external_link }}'] %}
+
+				  	  	{% if keyr == 0 %}
+
+				  	  	 	<div class="item slides active">
+						      	
+
+				  
+
+
+							<div class="background-image" style="background-image: url({{ imgurl }});height: 724px;
+    background-size: cover;
+    background-repeat: no-repeat;background-position: center center;">
+
+												<div class="slider-container">
+												    <div class="gradient"></div>
+												    <div class="barslider"></div>
+												    <div class="slide-text">
+												          <h2>
+
+												          	{% for word in numberOfWords %}
+														        {{ word }}<br/>
+														    {% endfor %}
+
+
+												          </h2>
+												          <h3>{{ feature_body }}</h3> 
+												          <a href='{{ featuredlink }}' target="_blank" class="button"> Read More</a> 
+												         
+													</div>
+												</div>
+
+
+											</div>
+
+
+							    	</div>
+
+						  	  	{% else %}
+
+						  	  		<div class="item slides">
+						
+   	
+
+								<div class="background-image" style="background-image: url({{ imgurl }});height: 724px;
+    background-size: cover;
+    background-repeat: no-repeat;background-position: center center;">
+
+												<div class="slider-container">
+												    <div class="gradient"></div>
+												    <div class="barslider"></div>
+												    <div class="slide-text">
+												          <h2>
+												          		{% for word in numberOfWords %}
+															        {{ word }}<br/>
+															    {% endfor %}
+												          </h2>
+												          <h3>{{ feature_body }}</h3> 
+												          <a href='{{ featuredlink }}' target="_blank" class="button"> Read More</a> 
+												          
+													</div>
+												</div>
+
+
+											</div>
+
+								    </div>
+						  	  	
+						  	  	{% endif %}
+						  	  
+						  	  {% endfor %}
+
+
+						   
+						    
+					</div> 
+		</div>
+  
+

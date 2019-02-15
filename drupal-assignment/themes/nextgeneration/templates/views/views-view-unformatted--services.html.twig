@@ -1,0 +1,69 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if title %}
+  {{ title }}
+{% endif %}
+      
+
+ 
+  
+	
+<div id="mixedSlider">
+                <div class="MS-content">
+
+                		
+                           
+                		{% for key, row in rows %}
+					        
+					    	<div class="item"> 
+
+					    			{{ row.content }}
+						        
+							</div>	
+					       
+					   {% endfor %} 
+
+                       
+                        
+
+                </div>
+
+                <div class="MS-controls">
+                        <button class="MS-left">
+                            {# <i class="glyphicon glyphicon-chevron-left" aria-hidden="true"></i> #}
+                            <img src="themes/nextgeneration/images/prev-promo@2x.png" width="27" alt="Prev" aria-hidden="true"></a>
+                          </button>
+
+                        <button class="MS-right">
+                            {# <i class="glyphicon glyphicon-chevron-right " aria-hidden="true"></i> #}
+                            <img src="themes/nextgeneration/images/next-promo@2x.png" width="27" alt="Next" aria-hidden="true">
+                          </button>
+                    </div>
+</div>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> 
+<script src="themes/nextgeneration/js/multislider.js"></script> 
+
+<script type="text/javascript">
+ $('#mixedSlider').multislider({
+      duration: 750,
+      interval: 3000
+    });
+
+</script>

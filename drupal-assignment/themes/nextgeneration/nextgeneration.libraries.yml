@@ -1,0 +1,12 @@
+global-styling:
+  css:
+    theme:
+      css/style.css: {}
+     
+      
+   
+global-scripts:
+  js:
+    js/jquery-1.12.4.min.js: {}
+    
+       
